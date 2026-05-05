@@ -1,0 +1,16 @@
+# Core ML libraries — exact versions pinned for HPC reproducibility.
+# Torch still requires the CUDA-appropriate wheel/source on the target machine,
+# but the framework version itself is pinned here for reproducibility.
+torch==2.3.1
+transformers==4.40.2
+trl==0.8.6
+peft==0.10.0
+bitsandbytes==0.43.1
+datasets==2.18.0
+accelerate==0.28.0
+
+# SMT solver
+z3-solver==4.12.6.0
+
+# Utilities
+numpy==1.26.4

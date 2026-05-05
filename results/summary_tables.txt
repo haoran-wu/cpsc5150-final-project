@@ -1,0 +1,38 @@
+Summary Table — Model Size: small
+======================================================================
+Fact Pattern         Model Output    SMT Verdict     Status
+----------------------------------------------------------------------
+case1_alex           Yes             Yes             Correct
+case2_maria          Yes             No              Error
+case3_james          Yes             Yes             Correct
+case4_linda          Yes             No              Error
+case5_carlos         Yes             No              Error
+case6_sophie         Yes             Yes             Correct
+----------------------------------------------------------------------
+Correct: 3/6
+
+Summary Table — Model Size: medium
+======================================================================
+Fact Pattern         Model Output    SMT Verdict     Status
+----------------------------------------------------------------------
+case1_alex           Yes             Yes             Correct
+case2_maria          Yes             No              Error
+case3_james          Yes             Yes             Correct
+case4_linda          Yes             No              Error
+case5_carlos         Yes             No              Error
+case6_sophie         Yes             Yes             Correct
+----------------------------------------------------------------------
+Correct: 3/6
+
+Summary Table — Model Size: large
+======================================================================
+Fact Pattern         Model Output    SMT Verdict     Status
+----------------------------------------------------------------------
+case1_alex           Yes             Yes             Correct
+case2_maria          Yes             No              Error
+case3_james          Yes             Yes             Correct
+case4_linda          Yes             No              Error
+case5_carlos         Yes             No              Error
+case6_sophie         Yes             Yes             Correct
+----------------------------------------------------------------------
+Correct: 3/6

@@ -1,0 +1,44 @@
+[
+  {
+    "case_id": "case1_alex",
+    "description": "Alex, 17, lives with aunt full-time, aunt pays all expenses.",
+    "q1_assert_dependent": "sat",
+    "q2_assert_not_dependent": "unsat",
+    "smt_verdict": "Yes"
+  },
+  {
+    "case_id": "case2_maria",
+    "description": "Maria, 25, grad student in university housing, stipend covers living expenses.",
+    "q1_assert_dependent": "unsat",
+    "q2_assert_not_dependent": "sat",
+    "smt_verdict": "No"
+  },
+  {
+    "case_id": "case3_james",
+    "description": "James, 15, lives with parents during school year, summers with grandparents.",
+    "q1_assert_dependent": "sat",
+    "q2_assert_not_dependent": "unsat",
+    "smt_verdict": "Yes"
+  },
+  {
+    "case_id": "case4_linda",
+    "description": "Linda, 45, lives with adult daughter, earns $5,000, daughter provides >50% support.",
+    "q1_assert_dependent": "unsat",
+    "q2_assert_not_dependent": "sat",
+    "smt_verdict": "No"
+  },
+  {
+    "case_id": "case5_carlos",
+    "description": "Carlos, 19, dropped out, earns $8,000, parents provide majority of support.",
+    "q1_assert_dependent": "unsat",
+    "q2_assert_not_dependent": "sat",
+    "smt_verdict": "No"
+  },
+  {
+    "case_id": "case6_sophie",
+    "description": "Sophie, 16, foster family provides all support. SMT extended with is_eligible_foster_child.",
+    "q1_assert_dependent": "sat",
+    "q2_assert_not_dependent": "unsat",
+    "smt_verdict": "Yes"
+  }
+]
