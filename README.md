@@ -67,9 +67,9 @@ python scripts/evaluate.py --checkpoint checkpoints/large  --model_size large
 
 ## Submission
 
-Submit the project files on Gradescope. The GitHub repository is only a
-version-controlled backup; the course PDF asks for the final deliverables and
-report to be submitted through Gradescope.
+If Gradescope asks for a GitHub submission, submit this repository link. The
+repository contains the required datasets, training/evaluation code, SMT files,
+report, and summary tables. Large generated checkpoints and logs are excluded.
 
 ## Notes
 

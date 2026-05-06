@@ -4,6 +4,7 @@ logs/
 __pycache__/
 *.pyc
 .DS_Store
+*.zip
 .claude/
 plan.md
 results/summary_tables_*backup*

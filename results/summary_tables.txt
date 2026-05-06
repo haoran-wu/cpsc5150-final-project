@@ -7,9 +7,9 @@ case2_maria          Yes             No              Error
 case3_james          Yes             Yes             Correct
 case4_linda          Yes             No              Error
 case5_carlos         Yes             No              Error
-case6_sophie         Unclear         Yes             Ambiguous
+case6_sophie         Yes             Yes             Correct
 ----------------------------------------------------------------------
-Correct: 2/6
+Correct: 3/6
 
 Summary Table — Model Size: medium
 ======================================================================
@@ -20,9 +20,9 @@ case2_maria          Yes             No              Error
 case3_james          Yes             Yes             Correct
 case4_linda          Yes             No              Error
 case5_carlos         Yes             No              Error
-case6_sophie         Unclear         Yes             Ambiguous
+case6_sophie         Yes             Yes             Correct
 ----------------------------------------------------------------------
-Correct: 2/6
+Correct: 3/6
 
 Summary Table — Model Size: large
 ======================================================================

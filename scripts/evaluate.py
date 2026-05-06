@@ -112,6 +112,23 @@ def parse_label(raw_output: str) -> str:
         return "Yes"
     if first_word == "no":
         return "No"
+    # Some model outputs ignore the requested "Answer:" prefix but clearly state
+    # the legal conclusion in the first sentence.
+    first_sentence = re.split(r'[.!?]\s+', text, maxsplit=1)[0].lower()
+    yes_patterns = [
+        r'\bqualif(?:y|ies)\s+as\s+(?:a\s+)?dependent\b',
+        r'\bis\s+(?:a\s+)?(?:legal\s+)?dependent\b',
+        r'\bmeets\s+the\s+requirements\b',
+    ]
+    no_patterns = [
+        r'\bdoes\s+not\s+qualif(?:y|ies)\b',
+        r'\bnot\s+(?:a\s+)?(?:legal\s+)?dependent\b',
+        r'\bfails?\s+(?:the\s+)?requirements\b',
+    ]
+    if any(re.search(p, first_sentence) for p in no_patterns):
+        return "No"
+    if any(re.search(p, first_sentence) for p in yes_patterns):
+        return "Yes"
     return "Unclear"
 
 
