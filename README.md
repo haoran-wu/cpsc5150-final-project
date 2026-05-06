@@ -61,9 +61,12 @@ python scripts/evaluate.py --checkpoint checkpoints/large  --model_size large
 | File | Description |
 |------|-------------|
 | `results/smt_verdicts.json` | Z3 double-query verdicts for all 6 fact patterns |
-| `results/raw_outputs_{size}.jsonl` | Full model outputs (18 records total) |
 | `results/summary_table_{size}.txt` | Formatted summary table per model size |
 | `results/summary_tables.txt` | All three tables combined (submission copy) |
+
+`scripts/evaluate.py` also writes `results/raw_outputs_{size}.jsonl` when run;
+these generated logs are not tracked in GitHub because the submitted summary
+tables contain the model verdicts required for grading.
 
 ## Submission
 
