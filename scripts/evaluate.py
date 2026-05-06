@@ -135,7 +135,7 @@ def load_model(checkpoint_dir: str):
     base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
     base_model = AutoModelForCausalLM.from_pretrained(
         base_model_id,
-        dtype=torch.bfloat16,
+        torch_dtype=torch.bfloat16,
         device_map="cuda:0",
     )
     print(f"  Loading PEFT adapter...", flush=True)

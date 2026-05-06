@@ -7,6 +7,6 @@ case2_maria          Yes             No              Error
 case3_james          Yes             Yes             Correct
 case4_linda          Yes             No              Error
 case5_carlos         Yes             No              Error
-case6_sophie         Yes             Yes             Correct
+case6_sophie         Unclear         Yes             Ambiguous
 ----------------------------------------------------------------------
-Correct: 3/6
+Correct: 2/6

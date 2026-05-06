@@ -18,13 +18,20 @@
 # Or run all three sequentially: bash run_train.sh all
 
 set -e
+set -u
 
-# Activate conda environment
-module load miniconda
-conda activate ~/project_pi_xy48/hw646/ycrc_conda/envs/llm
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$SCRIPT_DIR"
+
+# Optional environment activation for HPC users who provide CONDA_ENV_NAME.
+if command -v module >/dev/null 2>&1; then
+    module load miniconda >/dev/null 2>&1 || true
+fi
+if [ -n "${CONDA_ENV_NAME:-}" ] && command -v conda >/dev/null 2>&1; then
+    conda activate "$CONDA_ENV_NAME"
+fi
 
 DATASET_SIZE=${1:-small}
-PROJECT_DIR="/home/hw646/project_pi_xy48/hw646/Final Project"
 
 echo "=== SFT Training ==="
 echo "Dataset size : $DATASET_SIZE"

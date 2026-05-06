@@ -8,6 +8,7 @@ peft==0.10.0
 bitsandbytes==0.43.1
 datasets==2.18.0
 accelerate==0.28.0
+rich==13.7.1
 
 # SMT solver
 z3-solver==4.12.6.0

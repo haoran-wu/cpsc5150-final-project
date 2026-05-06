@@ -10,6 +10,7 @@ results/summary_tables_*backup*
 results/summary_tables_sft_v1*
 results/summary_table_sft_v1*
 results/raw_outputs_sft_v1*
+results/raw_outputs_*.jsonl
 data/dataset_*_v2.json
 data/dataset_*_v3.json
 data/dataset_*_v4.json

@@ -28,6 +28,9 @@ python scripts/run_smt.py
 ## Step 2 — Training (run on HPC via SLURM)
 
 ```bash
+# Create the SLURM log directory first:
+mkdir -p logs
+
 # Submit one job per dataset size (SFT via --use_sft flag):
 sbatch run_train.sh small
 sbatch run_train.sh medium
@@ -35,6 +38,13 @@ sbatch run_train.sh large
 
 # Or run all three sequentially (for testing):
 bash run_train.sh all
+```
+
+If you are using the course OnDemand Jupyter GPU session instead of `sbatch`,
+run the project directly in the terminal:
+
+```bash
+bash run_course_session.sh all
 ```
 
 ## Step 3 — Evaluation
@@ -55,9 +65,16 @@ python scripts/evaluate.py --checkpoint checkpoints/large  --model_size large
 | `results/summary_table_{size}.txt` | Formatted summary table per model size |
 | `results/summary_tables.txt` | All three tables combined (submission copy) |
 
+## Submission
+
+Submit the project files on Gradescope. The GitHub repository is only a
+version-controlled backup; the course PDF asks for the final deliverables and
+report to be submitted through Gradescope.
+
 ## Notes
 
 - All dependency versions in `requirements.txt` are pinned for reproducibility.
 - Exemption amount: **$5,000** (consistent with Project 4 SMT specification)
 - `case6_sophie.smt2` extends `base_152.smt2` with `is_eligible_foster_child` (§152(f)(1)(C))
 - Training uses LoRA SFT (r=16, α=32, 4-bit NF4 quantization); `--use_sft` flag is passed to `train_dpo.py`
+- `run_train.sh` uses paths relative to the repository root; it no longer depends on a lab-specific home directory.

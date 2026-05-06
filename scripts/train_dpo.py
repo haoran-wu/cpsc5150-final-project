@@ -26,8 +26,8 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
+    TrainingArguments,
 )
-from trl import DPOConfig, DPOTrainer, SFTConfig, SFTTrainer
 
 
 BASE_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
@@ -130,12 +130,14 @@ def main():
     print(f"Dataset size: {len(dataset)} examples")
 
     if args.use_sft:
+        from trl import SFTTrainer
+
         print("Using SFT mode (chosen only).")
         # SFT needs full prompt+completion string (unlike DPO which separates them).
         sft_dataset = Dataset.from_list([
             {"text": ex["prompt"] + ex["chosen"]} for ex in dataset
         ])
-        training_args = SFTConfig(
+        training_args = TrainingArguments(
             output_dir=str(output_dir),
             num_train_epochs=args.epochs,
             per_device_train_batch_size=args.per_device_train_batch_size,
@@ -146,16 +148,25 @@ def main():
             save_strategy="epoch",
             report_to="none",
             gradient_checkpointing=True,
-            dataset_text_field="text",
-            max_length=args.max_length,
         )
         trainer = SFTTrainer(
             model=model,
-            processing_class=tokenizer,
+            tokenizer=tokenizer,
             train_dataset=sft_dataset,
             args=training_args,
+            dataset_text_field="text",
+            max_seq_length=args.max_length,
         )
     else:
+        from trl import DPOTrainer
+        try:
+            from trl import DPOConfig
+        except ImportError as exc:
+            raise ImportError(
+                "This TRL version does not expose DPOConfig. "
+                "Use --use_sft or install a compatible TRL release."
+            ) from exc
+
         print("Using DPO mode.")
         dpo_config = DPOConfig(
             beta=args.beta,
