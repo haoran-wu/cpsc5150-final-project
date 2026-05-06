@@ -3,10 +3,31 @@
 Fine-tunes TinyLlama-1.1B on dependency-status (26 U.S.C. § 152) datasets using LoRA SFT,
 then evaluates outputs against a Z3 SMT formalization.
 
+## Deliverables
+
+| Deliverable | Location |
+|---|---|
+| Small / medium / large datasets | `data/dataset_small.json`, `data/dataset_medium.json`, `data/dataset_large.json` |
+| Training code | `scripts/train_dpo.py` |
+| Evaluation code | `scripts/evaluate.py` |
+| SMT evaluation code | `scripts/run_smt.py` |
+| SMT rule base and six case files | `smt/base_152.smt2`, `smt/case*.smt2` |
+| Final report | `report.md` |
+| SMT verdicts | `results_for_submission/smt_verdicts.json` |
+| Summary tables | `results_for_submission/summary_tables.txt` and `results_for_submission/{Small,Medium,Large}/summary_table.md` |
+
+## Final Results
+
+| Model Size | Correct | Main Error Pattern |
+|---|---:|---|
+| Small (10 examples) | 3/6 | Over-predicts Yes on income/age threshold cases |
+| Medium (20 examples) | 3/6 | Same Yes-bias as small |
+| Large (50 examples) | 3/6 | Same Yes-bias; output format slightly more consistent |
+
 ## Hardware requirements
 
-- GPU: 1× with ≥16 GB VRAM (tested on A100/V100)
-- RAM: 32 GB
+- GPU: 1× with ≥16 GB VRAM (tested end-to-end on CPSC 4150/5150 Bouchet OnDemand, RTX 5000 Ada)
+- RAM: 12-32 GB
 - Disk: ~10 GB for model weights
 
 ## Setup
@@ -63,6 +84,7 @@ python scripts/evaluate.py --checkpoint checkpoints/large  --model_size large
 | `results/smt_verdicts.json` | Z3 double-query verdicts for all 6 fact patterns |
 | `results/summary_table_{size}.txt` | Formatted summary table per model size |
 | `results/summary_tables.txt` | All three tables combined (submission copy) |
+| `results_for_submission/` | Grader-facing copy of final SMT verdicts and summary tables |
 
 `scripts/evaluate.py` also writes `results/raw_outputs_{size}.jsonl` when run;
 these generated logs are not tracked in GitHub because the submitted summary
